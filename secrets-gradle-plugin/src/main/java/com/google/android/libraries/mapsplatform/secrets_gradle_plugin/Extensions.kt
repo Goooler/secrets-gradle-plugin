@@ -16,9 +16,7 @@
 
 package com.google.android.libraries.mapsplatform.secrets_gradle_plugin
 
-import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.api.variant.BuildConfigField
-import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.api.variant.Variant
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
@@ -26,12 +24,6 @@ import com.android.build.gradle.internal.core.InternalBaseVariant
 import org.gradle.api.Project
 import java.io.FileNotFoundException
 import java.util.Properties
-
-fun Project.androidAppComponent(): ApplicationAndroidComponentsExtension? =
-    extensions.findByType(ApplicationAndroidComponentsExtension::class.java)
-
-fun Project.androidLibraryComponent(): LibraryAndroidComponentsExtension? =
-    extensions.findByType(LibraryAndroidComponentsExtension::class.java)
 
 fun Project.androidProject(): AppExtension? =
     extensions.findByType(AppExtension::class.java)

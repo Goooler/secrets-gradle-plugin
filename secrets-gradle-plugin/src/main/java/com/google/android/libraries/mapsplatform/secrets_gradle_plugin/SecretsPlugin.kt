@@ -15,6 +15,7 @@
 
 package com.google.android.libraries.mapsplatform.secrets_gradle_plugin
 
+import com.android.build.api.variant.AndroidComponentsExtension
 import com.android.build.api.variant.Variant
 import com.android.build.gradle.internal.core.InternalBaseVariant
 import org.gradle.api.Plugin
@@ -39,10 +40,8 @@ class SecretsPlugin : Plugin<Project> {
             extensionName,
             SecretsPluginExtension::class.java
         )
-        val supportedComponents =
-            listOf(project.androidAppComponent(), project.androidLibraryComponent())
-        supportedComponents.forEach { component ->
-            component?.onVariants { variant ->
+        project.extensions.configure(AndroidComponentsExtension::class.java) { component ->
+            component.onVariants { variant ->
                 val defaultProperties = extension.defaultPropertiesFileName?.let {
                     project.rootProject.loadPropertiesFile(it)
                 }
